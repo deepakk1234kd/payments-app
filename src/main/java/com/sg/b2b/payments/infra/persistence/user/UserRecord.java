@@ -1,4 +1,4 @@
-package com.sg.b2b.payments.domain.user;
+package com.sg.b2b.payments.infra.persistence.user;
 
 import com.sg.b2b.payments.bo.LoginCommand;
 import lombok.AllArgsConstructor;
@@ -13,21 +13,32 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class UserRecord {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 
-	@Column(name="username")
+	@Column
 	private String username;
-
-	@Column(name="password")
-	private String password;
+	@Column
+	private String passwordHash;
+	@Column
+	private String name;
+	@Column
+	private String accountNumber;
+	@Column
+	private String bank;
+	@Column
+	private String ifsc;
+	@Column
+	private String gstin;
+	@Column
+	private String email;
 
 	public static UserRecord translate(LoginCommand loginCommand) {
-		return UserRecord.builder().username(loginCommand.getUsername()).password(loginCommand.getPassword()).build();
+		return UserRecord.builder().username(loginCommand.getUsername()).passwordHash(loginCommand.getPassword()).build();
 	}
 	
 }

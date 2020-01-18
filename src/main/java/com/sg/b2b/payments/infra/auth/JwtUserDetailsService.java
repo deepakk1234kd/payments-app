@@ -1,7 +1,7 @@
 package com.sg.b2b.payments.infra.auth;
 
-import com.sg.b2b.payments.domain.user.UserRecord;
-import com.sg.b2b.payments.domain.user.UserRecordRepository;
+import com.sg.b2b.payments.infra.persistence.user.UserRecord;
+import com.sg.b2b.payments.infra.persistence.user.UserRecordRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +21,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         if(userRecordRepository.existsUserRecordByUsername(username)) {
             UserRecord userRecord = userRecordRepository.findByUsername(username);
-            return new User(userRecord.getUsername(), userRecord.getPassword(),
+            return new User(userRecord.getUsername(), userRecord.getPasswordHash(),
                     new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);

@@ -1,4 +1,4 @@
-package com.sg.b2b.payments.domain.user;
+package com.sg.b2b.payments.infra.persistence.user;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

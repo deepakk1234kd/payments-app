@@ -1,6 +1,6 @@
 package com.sg.b2b.payments.domain.transaction;
 
-public enum TransactionType {
+public enum TransactionStatus {
 
     INITIATE,
     UPDATE,

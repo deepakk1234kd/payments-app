@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-public class User {
+public class LoginCommand {
 
     private String username;
     private String password;

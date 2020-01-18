@@ -4,7 +4,7 @@
 //
 //import com.sg.b2b.payments.application.login.LoginService;
 //import com.sg.b2b.payments.bo.User;
-//import com.sg.b2b.payments.domain.user.User;
+//import com.sg.b2b.payments.infra.persistence.user.User;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
 //import org.mockito.InjectMocks;

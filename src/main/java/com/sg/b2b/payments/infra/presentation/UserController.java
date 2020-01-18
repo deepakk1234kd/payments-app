@@ -1,13 +1,11 @@
-package com.sg.b2b.payments.infra;
+package com.sg.b2b.payments.infra.presentation;
 
 import com.sg.b2b.payments.application.login.LoginService;
-import com.sg.b2b.payments.bo.User;
+import com.sg.b2b.payments.bo.LoginCommand;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import lombok.RequiredArgsConstructor;
 
 @RestController("/user")
 @CrossOrigin
@@ -20,8 +18,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/authenticate")
-	public String login(@RequestBody User user) {
-		return loginService.login(user);
+	public String login(@RequestBody LoginCommand loginCommand) {
+		return loginService.login(loginCommand);
 	}
 	
 }

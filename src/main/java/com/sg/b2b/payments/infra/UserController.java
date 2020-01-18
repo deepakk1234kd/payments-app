@@ -1,27 +1,20 @@
 package com.sg.b2b.payments.infra;
 
 import com.sg.b2b.payments.application.login.LoginService;
-import com.sg.b2b.payments.bo.User;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.sg.b2b.payments.bo.LoginCommand;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/user")
-@CrossOrigin
+@RestController
+@RequiredArgsConstructor
 public class UserController {
-	
+
 	private final LoginService loginService;
 
-	public UserController(LoginService loginService) {
-		this.loginService = loginService;
-	}
-
-	@RequestMapping("/authenticate")
-	public String login(@RequestBody User user) {
-		return loginService.login(user);
+	@PostMapping("/user/authenticate")
+	public ResponseEntity<?> authenticate(@RequestBody LoginCommand loginCommand) throws Exception{
+		return loginService.authenticate(loginCommand);
 	}
 	
 }

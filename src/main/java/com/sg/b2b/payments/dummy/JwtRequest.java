@@ -1,3 +1,4 @@
+/*
 package com.sg.b2b.payments.dummy;
 
 import java.io.Serializable;
@@ -26,3 +27,4 @@ public class JwtRequest implements Serializable {
         this.password = password;
     }
 }
+*/

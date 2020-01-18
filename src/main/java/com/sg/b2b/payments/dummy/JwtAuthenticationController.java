@@ -1,6 +1,9 @@
+/*
 package com.sg.b2b.payments.dummy;
 
-import java.util.Objects;
+import com.sg.b2b.payments.infra.auth.JwtResponse;
+import com.sg.b2b.payments.infra.auth.JwtTokenUtil;
+import com.sg.b2b.payments.infra.auth.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +25,7 @@ public class JwtAuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private JwtUserDetailsService userDetailsService;
+
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -40,3 +44,4 @@ public class JwtAuthenticationController {
         }
     }
 }
+*/

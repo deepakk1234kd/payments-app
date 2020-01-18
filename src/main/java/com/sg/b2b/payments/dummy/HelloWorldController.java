@@ -1,3 +1,4 @@
+/*
 package com.sg.b2b.payments.dummy;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,4 +10,4 @@ public class HelloWorldController {
     public String firstPage() {
         return "Hello World";
     }
-}
+}*/

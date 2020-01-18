@@ -1,20 +1,27 @@
-package com.sg.b2b.payments.dummy;
+package com.sg.b2b.payments.infra.auth;
 
-import java.util.ArrayList;
-
+import com.sg.b2b.payments.domain.user.UserRecord;
+import com.sg.b2b.payments.domain.user.UserRecordRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
+@RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
+
+    private final UserRecordRepository userRecordRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if ("javainuse".equals(username)) {
-            return new User("javainuse", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
+        if(userRecordRepository.existsUserRecordByUsername(username)) {
+            UserRecord userRecord = userRecordRepository.findByUsername(username);
+            return new User(userRecord.getUsername(), userRecord.getPassword(),
                     new ArrayList<>());
         } else {
             throw new UsernameNotFoundException("User not found with username: " + username);

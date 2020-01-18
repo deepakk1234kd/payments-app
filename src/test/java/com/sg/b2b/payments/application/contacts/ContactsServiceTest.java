@@ -50,6 +50,9 @@ public class ContactsServiceTest {
                         .contactId(1L)
                         .build());
     }
+    private void mockContactRepoDelete() {
+        Mockito.doNothing().when(contactsRepository).delete(Mockito.any(ContactRecord.class));
+    }
 
     @Test
     public void testContactCreate() {
@@ -131,5 +134,15 @@ public class ContactsServiceTest {
         mockContactRepo(command);
 
         contactsService.updateContact(1L, command);
+    }
+
+    @Test
+    public void testContactDelete() {
+        mockContactRepoDelete();
+
+        contactsService.deleteContact(10L, 1L);
+
+        Mockito.verify(contactsRepository, Mockito.times(1))
+                .delete(ContactRecord.builder().ownerId(10L).contactId(1L).build());
     }
 }

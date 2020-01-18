@@ -44,6 +44,12 @@ public class ContactsService {
     }
 
     public void deleteContact(Long userId, Long contactId) {
-
+        // TODO: check if relation exists?
+        contactsRepository.delete(
+                ContactRecord.builder()
+                    .ownerId(userId)
+                    .contactId(contactId)
+                    .build()
+        );
     }
 }
